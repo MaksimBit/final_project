@@ -7,3 +7,11 @@ class ProductPage(BasePage):
     def add_to_basket(self):
         login_link = self.browser.find_element(*BasketProduct.BASKET_LINK)
         login_link.click()
+    
+
+
+
+
+
+
+

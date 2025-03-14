@@ -5,13 +5,17 @@ from selenium.webdriver.common.by import By
 
 class ProductInBasket(BasePage):
 
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*BasketProduct.BASKET_MASSAGE), "Отображается сообщение об успешном завершении, но его не должно быть"
+
+    def should_be_success_message(self):
+        assert self.is_disappeared(*BasketProduct.BASKET_MASSAGE), "Отображается сообщение об успешном завершении"
+
+
     def product_in_basket(self):
         self.basket_not_empty()
         self.same_name()
         self.same_costs()
-
-    def testing(self):
-        print()
 
     def basket_not_empty(self):
         print(self.is_element_present(*BasketProduct.BASKET_MASSAGE))

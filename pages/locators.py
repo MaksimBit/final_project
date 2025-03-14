@@ -18,6 +18,12 @@ class BasketProduct():
     NAME_PRODUCT_IN_BASKET = (By.CSS_SELECTOR, "div[id='messages'] div div strong")
     COST_PRODUCT = (By.CSS_SELECTOR, "p[class='price_color']")
     COST_PRODUCT_IN_BASKET = (By.CSS_SELECTOR, "div.alert-safe p strong")
+
+class BasePageLocators():
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+
+    
     
 
  
