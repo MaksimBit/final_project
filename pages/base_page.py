@@ -1,6 +1,7 @@
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.common.exceptions import TimeoutException
+from .locators import LoginPageLocators
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from .locators import BasePageLocators
@@ -16,12 +17,22 @@ class BasePage:
     def open(self):
         self.browser.get(self.url)
 
+    def click(self, how, what):
+        return self.browser.find_element(how, what).click()
+
     def is_element_present(self, how, what):
         try:
             self.browser.find_element(how, what)    
         except (NoSuchElementException):
             return False
         return True
+    
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                 " probably unauthorised user"
+
+    def find_element_and_enter_text(self, how, what, text):
+        return self.browser.find_element(how, what).send_keys(text)
     
     def find_element_and_take_text(self, how, what):
         return self.browser.find_element(how, what).text
